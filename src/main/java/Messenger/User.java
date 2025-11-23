@@ -19,6 +19,11 @@ public class User {
         this.userName=userName;
     }
 
+    public void sendMessage(Message message) {
+        this.messages[currentMessagesCnt] = message;
+        currentMessagesCnt++;
+    }
+
     public void joinGroup(Group group) {
         if (currentGroupsCnt<MAX_GROUPS_CNT) {
             groups[currentGroupsCnt] = group;
