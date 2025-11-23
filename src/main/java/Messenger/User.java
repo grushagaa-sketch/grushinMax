@@ -43,6 +43,19 @@ public class User {
             }
         }
         if (flag) {
+            int cntDelMess=0;
+            // удаление сообщений, отправленных в удаляемой группе
+            for (int i=0; i<currentMessagesCnt; i++) {
+                if (messages[i].group == group) {
+                    messages[i] = messages[currentMessagesCnt-1-cntDelMess];
+                    cntDelMess++;
+                }
+            }
+            for (int i=0; i<cntDelMess;i++) {
+                messages[currentMessagesCnt-1] = null;
+                currentMessagesCnt--;
+            }
+
             groups[currentGroupsCnt-1]=null;
             currentGroupsCnt--;
         }
@@ -58,10 +71,45 @@ public class User {
             }
         }
         if (flag) {
+            int cntDelMess=0;
+            // удаление сообщений, отправленных в удаляемом канале
+            for (int i=0; i<currentMessagesCnt; i++) {
+                if (messages[i].channel == channel) {
+                    messages[i] = messages[currentMessagesCnt-1-cntDelMess];
+                    cntDelMess++;
+                }
+            }
+            for (int i=0; i<cntDelMess;i++) {
+                messages[currentMessagesCnt-1] = null;
+                currentMessagesCnt--;
+            }
+
             channels[currentChannelsCnt-1]=null;
             currentChannelsCnt--;
         }
     }
 
+    public void addMyChannel(Channel myChannel) {
+        if (this.myChannel==null) {
+            this.myChannel = myChannel;
+        }
+    }
 
+    public void delMyChannel() {
+        if (this.myChannel!=null) {
+            int cntDelMess=0;
+            // удаление сообщений, отправленных в "моем" канале
+            for (int i=0; i<currentMessagesCnt; i++) {
+                if (messages[i].channel == this.myChannel) {
+                    messages[i] = messages[currentMessagesCnt-1-cntDelMess];
+                    cntDelMess++;
+                }
+            }
+            for (int i=0; i<cntDelMess;i++) {
+                messages[currentMessagesCnt-1] = null;
+                currentMessagesCnt--;
+            }
+            this.myChannel = null;
+        }
+    }
 }
