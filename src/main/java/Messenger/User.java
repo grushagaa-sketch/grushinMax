@@ -51,7 +51,7 @@ public class User {
             int cntDelMess = 0;
             // удаление сообщений, отправленных в удаляемой группе
             for (int i = 0; i < currentMessagesCnt; i++) {
-                if (messages[i].group == group) {
+                if (messages[i].group.id.equals(group.id)) {
                     messages[i] = messages[currentMessagesCnt - 1 - cntDelMess];
                     cntDelMess++;
                 }
@@ -79,7 +79,7 @@ public class User {
             int cntDelMess = 0;
             // удаление сообщений, отправленных в удаляемом канале
             for (int i = 0; i < currentMessagesCnt; i++) {
-                if (messages[i].channel == channel) {
+                if (messages[i].channel.id.equals(channel.id)) {
                     messages[i] = messages[currentMessagesCnt - 1 - cntDelMess];
                     cntDelMess++;
                 }
@@ -105,7 +105,7 @@ public class User {
             int cntDelMess = 0;
             // удаление сообщений, отправленных в "моем" канале
             for (int i = 0; i < currentMessagesCnt; i++) {
-                if (messages[i].channel == this.myChannel) {
+                if (messages[i].channel.id.equals(this.myChannel.id)) {
                     messages[i] = messages[currentMessagesCnt - 1 - cntDelMess];
                     cntDelMess++;
                 }
