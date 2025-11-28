@@ -1,6 +1,6 @@
 package Messenger;
 
-public class Main {
+public class MainTest {
     public static void main(String[] args) {
 
         User Anya = new User("Anya", "@anya");  //легендарные создатели grushinMax
