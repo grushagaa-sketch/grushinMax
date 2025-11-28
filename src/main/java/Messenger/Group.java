@@ -66,6 +66,6 @@ public class Group {
 
     @Override
     public String toString() {
-        return String.format("Группа:" + name + " (ID: " + id + ", участников: " + currentMembersCnt + ")");
+        return "Группа:" + name + " (ID: " + id + ", участников: " + currentMembersCnt + ")";
     }
 }

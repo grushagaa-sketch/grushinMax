@@ -33,8 +33,8 @@ public class Channel {
         }
     }
 
-    public void addMessege(Message message) {
-        if (!messege.from.userName.equals(admin.userName)) { // проверка, что только админ может писать
+    public void addMessage(Message message) {
+        if (!message.userName.equals(admin.userName)) { // проверка, что только админ может писать
             System.out.println("Ошибка: только админ " + admin.userName + " может писать в канал");
             return;
         }
@@ -75,7 +75,6 @@ public class Channel {
 
     @Override
     public String toString() {
-        return String.format("Канал: %s (ID: %s, админ: %s, подписчиков: %d)",
-                name, id, admin.userName, currentSubscribersCnt);
+        return "Канал:" + name + " (ID: " + id + ", админ: " + admin.userName + ", подписчиков: " + currentSubscribersCnt + ")";
     }
 }
