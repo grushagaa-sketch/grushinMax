@@ -19,9 +19,24 @@ public class User {
         this.userName = userName;
     }
 
-    public void sendMessage(Message message) {
+    private void sendMessage(Message message) {
         this.messages[currentMessagesCnt] = message;
         currentMessagesCnt++;
+    }
+
+    public void sendMessageToChat(Message message) {
+        sendMessage(message);
+        message.getFromWho().sendMessage(message);
+
+    }
+    public void sendMessageToGroup(Message message) {
+        sendMessageToChat(message);
+        message.getGroup().addMessage(message);
+
+    }
+    public void sendMessageToMyChannel(Message message) {
+        sendMessageToChat(message);
+        message.getChannel().addMessage(message);
     }
 
     public void joinGroup(Group group) {
@@ -51,7 +66,7 @@ public class User {
             int cntDelMess = 0;
             // удаление сообщений, отправленных в удаляемой группе
             for (int i = 0; i < currentMessagesCnt; i++) {
-                if (messages[i].group.id.equals(group.id)) {
+                if (messages[i].getGroup().id.equals(group.id)) {
                     messages[i] = messages[currentMessagesCnt - 1 - cntDelMess];
                     cntDelMess++;
                 }
@@ -79,7 +94,7 @@ public class User {
             int cntDelMess = 0;
             // удаление сообщений, отправленных в удаляемом канале
             for (int i = 0; i < currentMessagesCnt; i++) {
-                if (messages[i].channel.id.equals(channel.id)) {
+                if (messages[i].getChannel().id.equals(channel.id)) {
                     messages[i] = messages[currentMessagesCnt - 1 - cntDelMess];
                     cntDelMess++;
                 }
@@ -105,7 +120,7 @@ public class User {
             int cntDelMess = 0;
             // удаление сообщений, отправленных в "моем" канале
             for (int i = 0; i < currentMessagesCnt; i++) {
-                if (messages[i].channel.id.equals(this.myChannel.id)) {
+                if (messages[i].getChannel().id.equals(this.myChannel.id)) {
                     messages[i] = messages[currentMessagesCnt - 1 - cntDelMess];
                     cntDelMess++;
                 }
