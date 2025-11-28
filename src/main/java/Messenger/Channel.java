@@ -6,8 +6,8 @@ public class Channel {
     public User admin;
     private User[] subscribers;
     private Message[] messages;
-    private int MAX_SUBSCRIBERS_CNT = 1000;
-    private int MAX_MESSAGES_CNT = 5000;
+    private final int MAX_SUBSCRIBERS_CNT = 1000;
+    private final int MAX_MESSAGES_CNT = 5000;
     private int currentSubscribersCnt;
     private int currentMessagesCnt;
 
@@ -34,7 +34,7 @@ public class Channel {
     }
 
     public void addMessage(Message message) {
-        if (!message.userName.equals(admin.userName)) { // проверка, что только админ может писать
+        if (!message.getFromWho.equals(admin.userName)) { // проверка, что только админ может писать
             System.out.println("Ошибка: только админ " + admin.userName + " может писать в канал");
             return;
         }
