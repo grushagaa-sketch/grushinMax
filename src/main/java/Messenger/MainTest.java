@@ -5,9 +5,9 @@ public class MainTest {
 
         User Anya = new User("Anya", "@anya");  //легендарные создатели grushinMax
         User Elina = new User("Elina", "@elina");
-        User Danya = new User("Danya", "@danya");
         User Igor = new User("Igor", "@igor");
-        User[] users = {Anya, Elina, Danya, Igor};
+        User Danya = new User("Danya", "@danya");
+        User[] users = {Anya, Elina, Igor, Danya};
 
         Group group = new Group("123456", "homework"); //группа, где Даня не выдержит давления
         for (int i = 0; i < 4; i++) {
@@ -18,7 +18,7 @@ public class MainTest {
 
         Channel channel = new Channel("47714214", "Kri", Danya); //тестовый канал для Данечки
         Danya.addMyChannel(channel);
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < 3; i++) {
             channel.addSubscriber(users[i]);
             users[i].joinChannel(channel);
         }
