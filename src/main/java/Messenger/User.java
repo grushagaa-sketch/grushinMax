@@ -17,6 +17,9 @@ public class User {
     public User(String name, String userName) {
         this.name = name;
         this.userName = userName;
+        this.groups = new Group[MAX_GROUPS_CNT];
+        this.channels = new Channel[MAX_CHANNELS_CNT];
+        this.messages = new Message[MAX_MESSAGES_CNT];
     }
 
     private void sendMessage(Message message) {
