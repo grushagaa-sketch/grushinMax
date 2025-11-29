@@ -34,7 +34,7 @@ public class Channel {
     }
 
     public void addMessage(Message message) {
-        if (!message.getFromWho().equals(admin.userName)) { // проверка, что только админ может писать
+        if (!message.getFromWho().userName.equals(admin.userName)) { // проверка, что только админ может писать
             System.out.println("Ошибка: только админ " + admin.userName + " может писать в канал");
             return;
         }
