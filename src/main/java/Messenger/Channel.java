@@ -57,7 +57,7 @@ public class Channel {
     public void displayMessages() {
         System.out.println("Сообщения в канале '" + name + "' (ID: " + id + "):");
         for (int i = 0; i < currentMessagesCnt; i++) {
-            System.out.println((i + 1) + ". " + messages[i]);
+            System.out.println((i + 1) + ". " + messages[i].getText());
         }
     }
 
