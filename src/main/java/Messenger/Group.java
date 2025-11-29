@@ -5,8 +5,8 @@ public class Group {
     public String name;
     private User[] members;
     private Message[] messages;
-    private int MAX_MEMBERS_CNT = 100;
-    private int MAX_MESSAGES_CNT = 1000;
+    private final int MAX_MEMBERS_CNT = 100;
+    private final int MAX_MESSAGES_CNT = 1000;
     private int currentMembersCnt;
     private int currentMessagesCnt;
 
